@@ -37,10 +37,9 @@ const Navbar = () => {
               <Link
                 key={item}
                 to={item.toLowerCase().replace(" ", "-")}
-                spy={true}
-                smooth={true}
-                offset={-70} // Adjust this value based on your navbar height
-                duration={500}
+                spy
+                smooth
+                offset={-100} // Adjust this value based on your navbar height
                 onSetActive={handleSetActive}
                 className={`
                   font-bold uppercase tracking-wider
