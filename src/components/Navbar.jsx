@@ -40,7 +40,7 @@ const Navbar = () => {
                 spy={true}
                 smooth={true}
                 offset={-70} // Adjust this value based on your navbar height
-                duration={800}
+                duration={500}
                 onSetActive={handleSetActive}
                 className={`
                   font-bold uppercase tracking-wider
