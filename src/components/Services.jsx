@@ -77,37 +77,65 @@ const Services = () => {
         duration: 0.7,
         stagger: 0.1,
         ease: "back.out",
+        scrollTrigger: {
+          trigger: servicesRef.current,
+          start: "top 80%",
+        },
       }
     );
   }, []);
 
   return (
     <Element name="services">
-      <section ref={servicesRef} className="py-20 bg-[#252525]" id="services">
+      <section
+        ref={servicesRef}
+        className="py-20 bg-gradient-to-b from-[#E5E3D12024] to-[#BFC1BA]"
+        id="services"
+      >
         <div className="container mx-auto">
-          <h2 className="text-5xl font-bold text-center mb-16 text-[#D0FC2D]">
+          <motion.h2
+            className="text-5xl font-bold text-center mb-16 text-[#7E3F0F]"
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             THE BEARS Services
-          </h2>
+          </motion.h2>
           <div className="grid grid-cols-4 gap-8">
             {services.map((service, index) => (
               <motion.div
                 key={index}
-                className="service-card bg-[#4F473C] text-[#FFFFFF] shadow-lg rounded-2xl p-6 text-center transition-all hover:shadow-2xl hover:scale-105"
-                whileHover={{ scale: 1.05 }}
+                className="service-card bg-[#FFFFFF] shadow-lg rounded-2xl p-6 text-center transition-all hover:shadow-2xl overflow-hidden"
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow:
+                    "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                }}
                 whileTap={{ scale: 0.95 }}
               >
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="mx-auto mb-6"
-                />
-                <h3 className="text-xl font-bold mb-4 text-[#D0FC2D]">
+                <div className="relative h-48 mb-6 overflow-hidden rounded-lg">
+                  <motion.img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-[#7E3F0F]">
                   {service.title}
                 </h3>
-                <p className="text-[#BED0BA] mb-4">{service.description}</p>
-                <button className="mt-6 px-6 py-2 bg-[#D0FC2D] text-[#252525] rounded-full hover:bg-[#B66613] transition-all">
+                <p className="text-[#2F3A37] mb-4">{service.description}</p>
+                <motion.button
+                  className="mt-6 px-6 py-2 bg-[#B66613] text-[#FFFFFF] rounded-full transition-all hover:bg-[#7E3F0F]"
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: "#7E3F0F",
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
                   Read More
-                </button>
+                </motion.button>
               </motion.div>
             ))}
           </div>
